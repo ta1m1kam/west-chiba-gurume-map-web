@@ -1,35 +1,32 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        west-chiba-gurume-map-web
-      </h1>
-      <h2 class="subtitle">
-        My terrific Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <GmapMap
+      :center="{ lat: 10, lng: 10 }"
+      :zoom="7"
+      map-type-id="terrain"
+      style="width: 500px; height: 300px"
+    >
+      <GmapMarker
+        v-for="(m, index) in markers"
+        :key="index"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center = m.position"
+      />
+    </GmapMap>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      markers: [
+        { position: { lng: 10.2, lat: 10 } },
+        { position: { lng: 10.1, lat: 10 } }
+      ]
+    }
   }
 }
 </script>
