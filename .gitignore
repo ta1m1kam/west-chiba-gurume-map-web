@@ -89,3 +89,11 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# docker-compose
+docker-compose.local.yml
+
+# env
+/env
+.envrc
+app.env

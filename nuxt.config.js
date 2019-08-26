@@ -1,5 +1,9 @@
+const environment = process.env.NODE_ENV || 'development'
+const envSet = require(`./env/env.${environment}.js`)
+
 export default {
   mode: 'spa',
+
   /*
    ** Headers of the page
    */
@@ -52,6 +56,9 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+
+  env: envSet,
+
   /*
    ** Build configuration
    */
